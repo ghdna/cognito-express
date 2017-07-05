@@ -133,6 +133,8 @@ authenticatedRoute.use(function(req, res, next) {
 	});
 });
 
+
+//Define your routes that need authentication check
 authenticatedRoute.get("/myfirstapi", function(req, res, next) {
 	res.send("If you're reading this, your API has been authenticated");
 });
