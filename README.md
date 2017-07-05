@@ -151,12 +151,15 @@ app.listen(port, function() {
 
 "use strict";
 
+//I stored my access token value returned from Cognito in a cookie called ClientAccessToken
+
 app.controller("MyFirstAPI", function($scope, $http, $cookies) {
 	$http({
 		method: "GET",
 		url: "/api/myfirstapi",
+
 		headers: {
-			accesstoken: $cookies.get("ClientAccessToken") //I stored my access token value returned from Cognito in a cookie called ClientAccessToken
+			accesstoken: $cookies.get("ClientAccessToken") 
             }
 		}
 	}).then(
