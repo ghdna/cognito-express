@@ -157,7 +157,6 @@ app.controller("MyFirstAPI", function($scope, $http, $cookies) {
 	$http({
 		method: "GET",
 		url: "/api/myfirstapi",
-
 		headers: {
 			accesstoken: $cookies.get("ClientAccessToken") 
             }
