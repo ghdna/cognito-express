@@ -32,9 +32,9 @@ After successful authentication of a user, Amazon Cognito issues three tokens to
 - Refresh token
 
 Save these tokens within the client app (preferably as cookies). 
-When any API is invoked from client, pass in the AccessToken or IDToken to the server for verification.
+When any API is invoked from client, pass in the AccessToken or IDToken to the server.
 
-It's completely up to you how you pass in the AccessToken or IDToken. 2 options:
+It's completely up to you how you pass in the AccessToken or IDToken. Here are two options:
 1. By adding them explicitly in Request Headers
 2. Just save the tokens as cookies. This way they get attached to request headers whenever APIs are invoked. (recommended)
 
@@ -93,6 +93,7 @@ cognitoExpress.validate(accessTokenFromClient, function(err, success) {
 
 ```
 ## Full Example 
+###### app.js - server
 ```javascript
 //app.js
 "use strict";
@@ -143,6 +144,32 @@ app.listen(port, function() {
 	console.log(`Live on port: ${port}!`);
 });
 ```
+
+###### client.js - angular example
+```javascript
+//client.js - angular example
+
+"use strict";
+
+app.controller("MyFirstAPI", function($scope, $http, $cookies) {
+	$http({
+		method: "GET",
+		url: "/api/myfirstapi",
+		headers: {
+			accesstoken: $cookies.get("ClientAccessToken") //I stored my access token value returned from Cognito in a cookie called ClientAccessToken
+            }
+		}
+	}).then(
+		function success(response) {
+			//Authenticated. Do something with the response. 
+		},
+		function error(err) {
+			console.error(err);
+		}
+	);
+});
+```
+
 
 ## Contributors
 
