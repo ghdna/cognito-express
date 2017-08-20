@@ -50,7 +50,7 @@ const cognitoExpress = new CognitoExpress({
 ```
 ## Usage
 ```javascript
-cognitoExpress.validate(accessTokenFromClient, function(err, success) {
+cognitoExpress.validate(accessTokenFromClient, function(err, response) {
 	if (err) {
 		/*
 			//API is not authenticated, do something with the error.
@@ -86,6 +86,7 @@ cognitoExpress.validate(accessTokenFromClient, function(err, success) {
 		*/
 	} else {
 		//Else API has been authenticated. Proceed.
+		res.locals.user = response; //Optional - if you want to capture user information
 		next();
 	}
 });
@@ -130,6 +131,7 @@ authenticatedRoute.use(function(req, res, next) {
 		if (err) return res.status(401).send(err);
 		
 		//Else API has been authenticated. Proceed.
+		res.locals.user = response;
 		next();
 	});
 });
@@ -137,7 +139,7 @@ authenticatedRoute.use(function(req, res, next) {
 
 //Define your routes that need authentication check
 authenticatedRoute.get("/myfirstapi", function(req, res, next) {
-	res.send("If you're reading this, your API has been authenticated");
+	res.send(`Hi ${res.locals.user.username}, your API call is authenticated!`);
 });
 
 app.listen(port, function() {
