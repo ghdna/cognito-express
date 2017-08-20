@@ -88,10 +88,7 @@ class CognitoExpress {
             },
             function(err, payload) {
                 if (err) return callback(err, null);
-                payload.username
-                    ? callback(null, payload)
-                    : callback(null, true);
-                return;
+                return callback(null, payload);
             }
         );
     }
