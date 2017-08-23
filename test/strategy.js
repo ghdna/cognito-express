@@ -21,6 +21,33 @@ describe("Strategy Negative Scenarios", () => {
 		);
 	});
 
+	it("should not have token use undefined", function() {
+		expect(function() {
+			new Strategy({
+				region: "us-east-1",
+				cognitoUserPoolId: "us-east-1_dXlFef73t",
+				tokenExpiration: 3600000 //Up to default expiration of 1 hour (4000 ms)
+			});
+		}).to.throw(
+			TypeError,
+			"Token use not specified in constructor. Possible values 'access' | 'id'"
+		);
+	});
+
+	it("should not have token be other than access or id", function() {
+		expect(function() {
+			new Strategy({
+				region: "us-east-1",
+				tokenUse: "hello", //Possible Values: access | id
+				cognitoUserPoolId: "us-east-1_dXlFef73t",
+				tokenExpiration: 3600000 //Up to default expiration of 1 hour (4000 ms)
+			});
+		}).to.throw(
+			TypeError,
+			"Token use values not accurate in the constructor. Possible values 'access' | 'id'"
+		);
+	});
+
 	it("should not have user pool undefined", function() {
 		expect(function() {
 			new Strategy({
@@ -34,10 +61,12 @@ describe("Strategy Negative Scenarios", () => {
 		);
 	});
 
+
+
 	it("should not have Region undefined", function() {
 		expect(function() {
 			new Strategy({
-				cognitoUserPoolId: "23233",
+				cognitoUserPoolId: "us-east-1_dXlFef73t",
 				tokenUse: "access", //Possible Values: access | id
 				tokenExpiration: 3600000 //Up to default expiration of 1 hour (4000 ms)
 			});
@@ -64,6 +93,15 @@ describe("Strategy Positive Scenarios", () => {
 		strategy.init(callback => {
 			expect(callback).to.eql(true);
 			done();
+		});
+	});
+
+	it("should check if Validate function can fail successfully when invalid token is passed", done => {
+		strategy.init(callback => {
+			strategy.validate("token", function(err, response) {
+				expect(err).to.eql("Not a valid JWT token");
+				done();
+			});
 		});
 	});
 
