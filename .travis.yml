@@ -6,7 +6,12 @@ node_js:
 before_install:
   - "npm install"
 
+script: 
+  - npm test
+
 env:
   CODECLIMATE_REPO_TOKEN: "a9beb799d541dad4b9956479ef0a6e100c47d821d4c1d1683eafa65fb77aea38"
 
 sudo: false
+
+after_success: 'npm run coveralls'
