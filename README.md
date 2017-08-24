@@ -20,8 +20,6 @@ This module lets you authenticate Node.js API requests by verifying the JWT sign
 
 The module can be easily and unobtrusively integrated into any application or framework that supports [Connect](http://www.senchalabs.org/connect/)-style middleware, including [Express](http://expressjs.com/).
 
-This is a simple module that authenticates web APIs by verifying the JWT signature of AccessToken or IDToken 
-
 This module essentially bundles steps 1-7  listed on the official AWS documentation on  [Using ID Tokens and Access Tokens in your Web APIs](http://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-tokens-with-identity-providers.html#amazon-cognito-identity-user-pools-using-id-and-access-tokens-in-web-api)
 
 1. Download and store the JSON Web Token (JWT) set for your user pool. 
