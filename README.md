@@ -16,6 +16,9 @@ npm install cognito-express --save
 
 ## Motivation
 
+
+![Architecture](https://image.ibb.co/nQG6wR/Screen_Shot_2017_10_30_at_18_30_25.png)
+
 This module lets you authenticate Node.js API requests by verifying the JWT signature of AccessToken or IDToken - without needing to call Amazon Cognito for each API invocation.
 
 The module can be easily and unobtrusively integrated into any application or framework that supports [Connect](http://www.senchalabs.org/connect/)-style middleware, including [Express](http://expressjs.com/).
