@@ -61,8 +61,6 @@ describe("Strategy Negative Scenarios", () => {
 		);
 	});
 
-
-
 	it("should not have Region undefined", function() {
 		expect(function() {
 			new Strategy({
@@ -88,28 +86,25 @@ describe("Strategy Positive Scenarios", () => {
 		expect(strategy.validate).to.be.a("function");
 	});
 
-	it("should check if Strategy can initialized successfully", done => {
+	it("should check if Strategy can initialized successfully", async () => {
 		strategy = new Strategy(strategyConfig);
-		strategy.init(callback => {
+		await strategy.init(callback => {
 			expect(callback).to.eql(true);
-			done();
 		});
 	});
 
-	it("should check if Validate function can fail successfully when invalid token is passed", done => {
-		strategy.init(callback => {
+	it("should check if Validate function can fail successfully when invalid token is passed", async () => {
+		await strategy.init(callback => {
 			strategy.validate("token", function(err, response) {
 				expect(err).to.eql("Not a valid JWT token");
-				done();
 			});
 		});
 	});
 
-	it("should check if Validate function can execute successfully by detecting an expired token", done => {
-		strategy.init(callback => {
+	it("should check if Validate function can execute successfully by detecting an expired token", async () => {
+		await strategy.init(callback => {
 			strategy.validate(token, function(err, response) {
 				expect(err.name).to.eql("TokenExpiredError");
-				done();
 			});
 		});
 	});
