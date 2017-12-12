@@ -2,6 +2,7 @@
 
 const expect = require("chai").expect,
 	Strategy = require(".."),
+	rewire = require("rewire"),
 	strategyConfig = {
 		region: "us-east-1",
 		cognitoUserPoolId: "us-east-1_dXlFef73t",
@@ -73,12 +74,23 @@ describe("Strategy Negative Scenarios", () => {
 });
 
 describe("Strategy Positive Scenarios", () => {
+	const app = rewire("../lib/strategy.js");
 	let strategy;
 	beforeEach(() => {});
 
 	it("should check if GeneratePem function exists", () => {
 		strategy = new Strategy(strategyConfig);
 		expect(strategy.init).to.be.a("function");
+	});
+
+	it("should check if jwtVerify function exists", () => {
+		const jwtVerify = app.__get__("jwtVerify");
+		expect(jwtVerify).to.be.a("function");
+	});
+
+	it("should check if configurationIsCorrect function exists", () => {
+		const configurationIsCorrect = app.__get__("configurationIsCorrect");
+		expect(configurationIsCorrect).to.be.a("function");
 	});
 
 	it("should check if Validate function exists", () => {
