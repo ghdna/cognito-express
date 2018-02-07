@@ -3,6 +3,7 @@
 [![Code Climate](https://codeclimate.com/github/ghdna/cognito-express/badges/gpa.svg)](https://codeclimate.com/github/ghdna/cognito-express/)
 [![Coverage Status](https://coveralls.io/repos/github/ghdna/cognito-express/badge.svg?branch=master)](https://coveralls.io/github/ghdna/cognito-express?branch=master)
 [![dependencies Status](https://david-dm.org/ghdna/cognito-express/status.svg)](https://david-dm.org/ghdna/cognito-express)
+[![Downloads](https://img.shields.io/npm/dt/cognito-express.svg)](https://www.npmjs.com/package/cognito-express)
 
 
 ## Synopsis
