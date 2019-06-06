@@ -119,14 +119,12 @@ describe("Strategy Positive Scenarios", () => {
 	});
 
 	it("should check if Validate function can fail successfully when invalid token is passed (Promise)", async () => {
-		await strategy.init(async callback => {
-			try {
-				await strategy.validate("token");
-				expect(true).to.eql(false);
-			} catch (err) {
-				expect(err).to.eql("Not a valid JWT token");
-			};
-		});
+		await strategy.init(result => expect(result).to.eql(true));
+		try {
+			await strategy.validate("token");
+		} catch (err) {
+			expect(err).to.eql("Not a valid JWT token");
+		};
 	});
 
 
