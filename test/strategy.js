@@ -7,7 +7,7 @@ const chai = require("chai"),
 	expect = chai.expect,
 	strategyConfig = {
 		region: "us-east-1",
-		cognitoUserPoolId: "us-east-1_dXlFef73t",
+		cognitoUserPoolId: "us-east-1_PNBFQ9W7X",
 		tokenUse: "access", //Possible Values: access | id
 		tokenExpiration: 3600000 //Up to default expiration of 1 hour (4000 ms)
 	},
@@ -30,7 +30,7 @@ describe("Strategy Negative Scenarios", () => {
 		expect(function() {
 			new Strategy({
 				region: "us-east-1",
-				cognitoUserPoolId: "us-east-1_dXlFef73t",
+				cognitoUserPoolId: "us-east-1_PNBFQ9W7X",
 				tokenExpiration: 3600000 //Up to default expiration of 1 hour (4000 ms)
 			});
 		}).to.throw(
@@ -44,7 +44,7 @@ describe("Strategy Negative Scenarios", () => {
 			new Strategy({
 				region: "us-east-1",
 				tokenUse: "hello", //Possible Values: access | id
-				cognitoUserPoolId: "us-east-1_dXlFef73t",
+				cognitoUserPoolId: "us-east-1_PNBFQ9W7X",
 				tokenExpiration: 3600000 //Up to default expiration of 1 hour (4000 ms)
 			});
 		}).to.throw(
@@ -69,7 +69,7 @@ describe("Strategy Negative Scenarios", () => {
 	it("should not have Region undefined", function() {
 		expect(function() {
 			new Strategy({
-				cognitoUserPoolId: "us-east-1_dXlFef73t",
+				cognitoUserPoolId: "us-east-1_PNBFQ9W7X",
 				tokenUse: "access", //Possible Values: access | id
 				tokenExpiration: 3600000 //Up to default expiration of 1 hour (4000 ms)
 			});
@@ -126,15 +126,6 @@ describe("Strategy Positive Scenarios", () => {
 			} catch (err) {
 				expect(err).to.eql("Not a valid JWT token");
 			};
-		});
-	});
-
-
-	it("should check if Validate function can execute successfully by detecting an expired token", async () => {
-		await strategy.init(callback => {
-			strategy.validate(token, function(err, response) {
-				expect(err.name).to.eql("TokenExpiredError");
-			});
 		});
 	});
 });
