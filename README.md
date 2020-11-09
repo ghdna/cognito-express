@@ -193,6 +193,7 @@ app.controller("MyFirstAPI", function($scope, $http, $cookies) {
 ## Contributors
 
 [Gary Arora](https://twitter.com/AroraGary)
+[Grant Unwin](https://github.com/grant-unwin)
 
 ## License
 
