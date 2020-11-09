@@ -1,0 +1,11 @@
+{
+    "include": ["lib/**/*"],
+    "compilerOptions": {
+      "allowJs": true,
+      "declaration": true,
+      "outDir": "dist",
+      "target": "ES2015",
+      "moduleResolution": "Node",
+      "module": "CommonJS",
+    },
+}
