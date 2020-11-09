@@ -1,5 +1,5 @@
 
-# Cognito-Express: API Authentication with AWS Congito
+# Cognito-Express: API Authentication with AWS Cognito
 
 [![NPM](https://nodei.co/npm/cognito-express.png?compact=true)](https://nodei.co/npm/cognito-express/)
 
