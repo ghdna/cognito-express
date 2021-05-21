@@ -124,7 +124,8 @@ describe("Strategy Positive Scenarios", () => {
 				await strategy.validate("token");
 				expect(true).to.eql(false);
 			} catch (err) {
-				expect(err).to.eql("Not a valid JWT token");
+				expect(err).to.be.an.instanceof(TypeError);
+				expect(err.message).to.eql("Not a valid JWT token");
 			};
 		});
 	});
