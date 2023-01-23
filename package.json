@@ -34,7 +34,7 @@
       "chai-as-promised": "^7.1.1",
       "coveralls": "^3.0.2",
       "istanbul": "^0.4.5",
-      "mocha": "^8.0.1",
+      "mocha": "^10.2.0",
       "rewire": "^6.0.0"
    },
    "repository": {
